@@ -7,6 +7,15 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3446C0CF2D4D3EF100DECA0D /* Sounds.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3446C0CE2D4D3EF100DECA0D /* Sounds.swift */; };
+		346880B62D514DDF00C4D171 /* TimeManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 346880B52D514DDA00C4D171 /* TimeManager.swift */; };
+		346880B82D514DFC00C4D171 /* TimerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 346880B72D514DF600C4D171 /* TimerView.swift */; };
+		346880BA2D5154B200C4D171 /* setTimerSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 346880B92D5154AE00C4D171 /* setTimerSheet.swift */; };
+		34E038402D4D5A8500C8DBF9 /* pink-noise.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 34E0383E2D4D5A8500C8DBF9 /* pink-noise.mp3 */; };
+		34E038412D4D5A8500C8DBF9 /* brown-noise.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 34E0383D2D4D5A8500C8DBF9 /* brown-noise.mp3 */; };
+		34E038442D4D696600C8DBF9 /* SoundManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34E038432D4D695300C8DBF9 /* SoundManager.swift */; };
+		34E038462D4D6FC500C8DBF9 /* scrollTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34E038452D4D6FC000C8DBF9 /* scrollTest.swift */; };
+		34E038482D4D76FE00C8DBF9 /* white-noise.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 34E038472D4D76FE00C8DBF9 /* white-noise.mp3 */; };
 		BB46516F2BCD807A0059AE63 /* ImageCarouselApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB46516E2BCD807A0059AE63 /* ImageCarouselApp.swift */; };
 		BB4651732BCD807B0059AE63 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BB4651722BCD807B0059AE63 /* Assets.xcassets */; };
 		BB4651762BCD807B0059AE63 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BB4651752BCD807B0059AE63 /* Preview Assets.xcassets */; };
@@ -18,6 +27,15 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		3446C0CE2D4D3EF100DECA0D /* Sounds.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sounds.swift; sourceTree = "<group>"; };
+		346880B52D514DDA00C4D171 /* TimeManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeManager.swift; sourceTree = "<group>"; };
+		346880B72D514DF600C4D171 /* TimerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerView.swift; sourceTree = "<group>"; };
+		346880B92D5154AE00C4D171 /* setTimerSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = setTimerSheet.swift; sourceTree = "<group>"; };
+		34E0383D2D4D5A8500C8DBF9 /* brown-noise.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "brown-noise.mp3"; sourceTree = "<group>"; };
+		34E0383E2D4D5A8500C8DBF9 /* pink-noise.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "pink-noise.mp3"; sourceTree = "<group>"; };
+		34E038432D4D695300C8DBF9 /* SoundManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SoundManager.swift; sourceTree = "<group>"; };
+		34E038452D4D6FC000C8DBF9 /* scrollTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = scrollTest.swift; sourceTree = "<group>"; };
+		34E038472D4D76FE00C8DBF9 /* white-noise.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "white-noise.mp3"; sourceTree = "<group>"; };
 		BB46516B2BCD807A0059AE63 /* ImageCarousel.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ImageCarousel.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BB46516E2BCD807A0059AE63 /* ImageCarouselApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageCarouselApp.swift; sourceTree = "<group>"; };
 		BB4651722BCD807B0059AE63 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -40,6 +58,16 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		34E0383C2D4D5A6E00C8DBF9 /* Sounds */ = {
+			isa = PBXGroup;
+			children = (
+				34E0383D2D4D5A8500C8DBF9 /* brown-noise.mp3 */,
+				34E038472D4D76FE00C8DBF9 /* white-noise.mp3 */,
+				34E0383E2D4D5A8500C8DBF9 /* pink-noise.mp3 */,
+			);
+			path = Sounds;
+			sourceTree = "<group>";
+		};
 		BB4651622BCD807A0059AE63 = {
 			isa = PBXGroup;
 			children = (
@@ -64,6 +92,8 @@
 				BBCE03D12BCD81FF006E4103 /* Views */,
 				BB46517F2BCD80900059AE63 /* SampleImage.swift */,
 				BB46517C2BCD80900059AE63 /* Store.swift */,
+				34E038432D4D695300C8DBF9 /* SoundManager.swift */,
+				346880B52D514DDA00C4D171 /* TimeManager.swift */,
 				BB4651722BCD807B0059AE63 /* Assets.xcassets */,
 				BBF6AC162BCE16B00003F336 /* Launch Screen.storyboard */,
 				BB4651742BCD807B0059AE63 /* Preview Content */,
@@ -74,6 +104,7 @@
 		BB4651742BCD807B0059AE63 /* Preview Content */ = {
 			isa = PBXGroup;
 			children = (
+				34E0383C2D4D5A6E00C8DBF9 /* Sounds */,
 				BB4651752BCD807B0059AE63 /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
@@ -83,6 +114,10 @@
 			isa = PBXGroup;
 			children = (
 				BB4651812BCD80900059AE63 /* ScrollViewCarouselView.swift */,
+				346880B92D5154AE00C4D171 /* setTimerSheet.swift */,
+				346880B72D514DF600C4D171 /* TimerView.swift */,
+				34E038452D4D6FC000C8DBF9 /* scrollTest.swift */,
+				3446C0CE2D4D3EF100DECA0D /* Sounds.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -147,6 +182,9 @@
 			files = (
 				BBF6AC172BCE16B00003F336 /* Launch Screen.storyboard in Resources */,
 				BB4651762BCD807B0059AE63 /* Preview Assets.xcassets in Resources */,
+				34E038402D4D5A8500C8DBF9 /* pink-noise.mp3 in Resources */,
+				34E038482D4D76FE00C8DBF9 /* white-noise.mp3 in Resources */,
+				34E038412D4D5A8500C8DBF9 /* brown-noise.mp3 in Resources */,
 				BB4651732BCD807B0059AE63 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -158,10 +196,16 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				346880B82D514DFC00C4D171 /* TimerView.swift in Sources */,
 				BB4651832BCD80900059AE63 /* Store.swift in Sources */,
 				BB4651862BCD80900059AE63 /* SampleImage.swift in Sources */,
+				34E038462D4D6FC500C8DBF9 /* scrollTest.swift in Sources */,
+				346880BA2D5154B200C4D171 /* setTimerSheet.swift in Sources */,
 				BB4651882BCD80900059AE63 /* ScrollViewCarouselView.swift in Sources */,
+				3446C0CF2D4D3EF100DECA0D /* Sounds.swift in Sources */,
+				346880B62D514DDF00C4D171 /* TimeManager.swift in Sources */,
 				BBF6AC152BCDFBAB0003F336 /* StartTab.swift in Sources */,
+				34E038442D4D696600C8DBF9 /* SoundManager.swift in Sources */,
 				BB46516F2BCD807A0059AE63 /* ImageCarouselApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

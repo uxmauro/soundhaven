@@ -6,15 +6,25 @@ struct ScrollViewCarouselView: View {
     @State private var rotation: Double = 0
     @State private var rotatingImages: Set<Int> = [] // Track which images are rotating
     @State private var backgroundColor: Color = .gray // Default background color
-    @State private var showColorPicker = false // Control color picker visibility
+    @State private var showColorPicker: Bool = false // Control color picker visibility
      
+    @StateObject private var noiseManager = SoundManager()
+    @State private var currentPlayingIndex: Int? // Track the currently playing index
+
     
     
     let timer = Timer.publish(every: 0.1, on: .main, in: .common).autoconnect()
     
     var body: some View {
         NavigationStack {
-            VStack(spacing: 8) {
+            
+            VStack(spacing: 10) {
+                Text("SoundHaven")
+                    .font(.largeTitle)
+                    .fontWeight(.bold)
+                    .foregroundColor(.primary)
+                    .offset(y:80)
+                
                 ScrollView(.horizontal, showsIndicators: false) {
                     LazyHStack(spacing: 0) {
                         ForEach(0..<store.sampleImages.count, id: \.self) { index in
@@ -32,28 +42,32 @@ struct ScrollViewCarouselView: View {
                                         .rotationEffect(.degrees(rotatingImages.contains(index) ? rotation : 0))
                                     Image(topLayerImage.imageName)
                                         .resizable()
-                                            .scaledToFit()
-                                            .frame(maxWidth: .infinity)
-                                            .clipShape(RoundedRectangle(cornerRadius: 20))
-                                            .padding(48)
-                                            .blendMode(.screen)
-                                    // Background circle
+                                        .scaledToFit()
+                                        .frame(maxWidth: .infinity)
+                                        .clipShape(RoundedRectangle(cornerRadius: 20))
+                                        .padding(48)
+                                        .blendMode(.screen)
+//                                     Background circle
                                     Circle()
                                         .foregroundStyle(backgroundColor.gradient.shadow(.inner(color: .black.opacity(0.5), radius: 1, y: 2)))
                                         .frame(width: 70, height: 70)
-//
+                                    //
                                     
                                     // Play/Stop button overlay
                                     Button(action: {
                                         toggleRotation(for: index)
+                                        handlePlayback(for: index)
+                                        //                                        noiseManager.togglePlayback()
+                                        
                                     }) {
                                         Image(systemName: rotatingImages.contains(index) ? "stop.circle.fill" : "play.circle.fill")
                                             .font(.system(size: 40))
                                             .foregroundStyle(.gray, .white.gradient)        .shadow(color: .black.opacity(0.2), radius: 2, y: 2)
-                                    
-//                                            .foregroundStyle(rotatingImages.contains(index) ? Color.red : Color.green,  .white ) // Red for stop, Green for play
+                                        
+                                        //                                            .foregroundStyle(rotatingImages.contains(index) ? Color.red : Color.green,  .white ) // Red for stop, Green for play
                                     }
                                 }
+
                             }
                             .containerRelativeFrame(.horizontal)
                             .scrollTransition(.animated, axis: .horizontal) { content, phase in
@@ -74,74 +88,74 @@ struct ScrollViewCarouselView: View {
                         }
                     }
                 }
-                
-                IndicatorView(imageCount: store.sampleImages.count, scrollID: $scrollID)
-                    .offset(y: -100)
-                
-                Spacer()
+                VStack(spacing: 20) {
+                    IndicatorView(imageCount: store.sampleImages.count, scrollID: $scrollID)
+                    //                    .offset(y: -100)
+                    
+                    TimerView()
+                    
+                }.offset(y: -100)
             }
             .background(backgroundColor.ignoresSafeArea())
             .navigationBarTitleDisplayMode(.inline)
             .toolbar {
-                ToolbarItem(placement: .principal) {
-                    Text("SoundHaven")
-                        .font(.title)
-                        .foregroundColor(.primary)
-                        .offset(y: 100)
-                }
-                   // Color Picker Button at the Top Right
-            // Color Picker Button at the Top Right
-                ToolbarItem(placement: .topBarTrailing) {
-//                    Button(action: { showColorPicker.toggle() }) {
-//                        Image(systemName: "paintpalette")
-//                            .font(.title2)
-//                            .foregroundColor(.primary)
-//                    }
-                    HStack {
-    // "slider.vertical.3" icon
-    Button(action: {
-        // Action if needed
-    }) {
-        Image(systemName: "slider.vertical.3")
-            .font(.subheadline)
-            .foregroundColor(.white)
-    }
-                        Spacer() 
-    ZStack {
-        // Paint Palette Icon
-        Image(systemName: "swatchpalette")
-            .font(.subheadline)
-            .background(.black)
-            .foregroundColor(.white)
-
-        // Invisible Color Picker Overlaid on Button
-        ColorPicker("", selection: $backgroundColor, supportsOpacity: true)
-            .opacity(0.1)
-            .offset(x: -12)
-            .frame(width: 50, height: 50)
-            .blendMode(.destinationOver)
-    }
-}
-                }
+    // Full-width toolbar container
+    ToolbarItem(placement: .navigationBarLeading) {
+        HStack {
+            Button(action: {
+                // Action if needed
+            }) {
+                Image(systemName: "slider.vertical.3")
+                    .font(.subheadline)
+                    .padding(10)
+                    .background(backgroundColor)
+                    .clipShape(Circle())
+                    .foregroundColor(.white)
+                    .shadow(color: .black.opacity(0.4), radius: 2, x: 0, y: 2)
             }
-            // Color Picker as a sheet
-            .sheet(isPresented: $showColorPicker) {
-                VStack {
-                 
-                    
-                    ColorPicker("Select Color", selection: $backgroundColor, supportsOpacity: true)
-                        .padding()
-                    
-                    Button("Done") {
-                        showColorPicker = false
-                    }
-               
-                }
-                .padding()
-            }
+            Spacer() // Pushes title to center
         }
     }
     
+    
+    ToolbarItem(placement: .navigationBarTrailing) {
+        HStack {
+            Spacer() // Pushes title to center
+         ZStack {
+    // Invisible Color Picker Overlaid on Button
+
+
+        Image(systemName: "swatchpalette")
+            .font(.subheadline)
+            .padding(8)
+            .background(backgroundColor)
+            .clipShape(Circle())
+            .foregroundColor(.white)
+            .shadow(color: .black.opacity(0.4), radius: 2, x: 0, y: 2)
+    
+             ColorPicker("", selection: $backgroundColor, supportsOpacity: false)
+                 .opacity(1) // Make sure it is fully visible
+                 .frame(width: 50, height: 50)
+                 .offset(x: -8)
+                 .blendMode(.destinationOver)
+             
+             
+}
+
+        }
+        
+    }
+                
+}
+
+        }
+    }
+    
+    
+    
+    
+    
+  
     private func toggleRotation(for index: Int) {
         if rotatingImages.contains(index) {
             rotatingImages.remove(index)
@@ -155,7 +169,41 @@ struct ScrollViewCarouselView: View {
             rotatingImages.insert(index)
         }
     }
+
+
+
+
+
+/// Handles playing the correct sound for a given index
+   private func handlePlayback(for index: Int) {
+       if currentPlayingIndex == index {
+           // Stop the currently playing sound
+           rotatingImages.remove(index)
+           noiseManager.togglePlayback()
+           currentPlayingIndex = nil
+       } else {
+           // Stop any currently playing sound before switching
+           if let currentlyPlaying = currentPlayingIndex {
+               rotatingImages.remove(currentlyPlaying)
+               noiseManager.togglePlayback()
+           }
+           
+           // Start the new sound
+
+           if index < SoundManager.NoiseType.allCases.count {
+               let noiseType = SoundManager.NoiseType.allCases[index]
+               noiseManager.switchNoise(to: noiseType)
+               noiseManager.togglePlayback()
+               rotatingImages.insert(index)
+               currentPlayingIndex = index
+           }
+       }
+   }
 }
+
+
+
+
 #Preview {
     ScrollViewCarouselView()
         .environment(Store())
