@@ -5,7 +5,7 @@ import SwiftUI
 struct ContentView: View {
     var body: some View {
         
-            ScrollViewCarouselView()
+            Main()
                 .tabItem {
                     Label("ScrollView+  ", systemImage: "3.circle.fill")
                 }

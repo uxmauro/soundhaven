@@ -6,6 +6,13 @@ class TimerManager: ObservableObject {
     @Published var isRunning = false
 
     private var timer: Timer?
+    private var soundManager: SoundManager
+    
+
+    init(soundManager: SoundManager) {
+           self.soundManager = soundManager
+       }
+    
 
     func start(with time: Int) {
         timeRemaining = time
@@ -26,6 +33,7 @@ class TimerManager: ObservableObject {
         timer = nil
         isRunning = false
         timeRemaining = 0
+        soundManager.stopPlayback()
     }
 
     func reset(to time: Int) {

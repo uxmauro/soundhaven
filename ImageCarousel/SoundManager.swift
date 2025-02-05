@@ -82,6 +82,17 @@ class SoundManager: ObservableObject {
         }
     }
     
+    func stopPlayback() {
+        if playerNode.isPlaying {  // ✅ Prevent stopping an already stopped engine
+            playerNode.stop()
+            audioEngine.stop()
+            audioEngine.reset()
+            isPlaying = false
+        }
+    }
+
+    
+    
     func switchNoise(to newNoise: NoiseType) {
            if currentNoise == newNoise { return } // Prevent unnecessary reloading
            
