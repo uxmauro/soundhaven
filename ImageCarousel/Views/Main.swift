@@ -103,14 +103,63 @@ struct Main: View {
             }
             .background(backgroundColor.ignoresSafeArea())
             .navigationBarTitleDisplayMode(.inline)
+//            .toolbar {
+//                // Full-width toolbar container
+//                ToolbarItem(placement: .navigationBarLeading) {
+//                    
+//                    HStack {
+//                        NavigationLink(destination: AudioMixer()) {
+//                            {
+//                                Image(systemName: "slider.vertical.3")
+//                                    .font(.subheadline)
+//                                    .padding(10)
+//                                    .background(backgroundColor)
+//                                    .clipShape(Circle())
+//                                    .foregroundColor(.white)
+//                                    .shadow(color: .black.opacity(0.4), radius: 2, x: 0, y: 2)
+//                            }
+//                            Spacer() // Pushes title to center
+//                        }
+//                    }
+//                }
+//                
+//                
+//                ToolbarItem(placement: .navigationBarTrailing) {
+//                    HStack {
+//                        Spacer() // Pushes title to center
+//                        ZStack {
+//                            // Invisible Color Picker Overlaid on Button
+//                            
+//                            
+//                            Image(systemName: "swatchpalette")
+//                                .font(.subheadline)
+//                                .padding(8)
+//                                .background(backgroundColor)
+//                                .clipShape(Circle())
+//                                .foregroundColor(.white)
+//                                .shadow(color: .black.opacity(0.4), radius: 2, x: 0, y: 2)
+//                            
+//                            ColorPicker("", selection: $backgroundColor, supportsOpacity: false)
+//                                .opacity(1) // Make sure it is fully visible
+//                                .frame(width: 50, height: 50)
+//                                .offset(x: -8)
+//                                .blendMode(.destinationOver)
+//                            
+//                            
+//                        }
+//                        
+//                    }
+//                    
+//                }
+//                
+//            }
+            
+            
             .toolbar {
-                // Full-width toolbar container
+                // Leading Toolbar Item
                 ToolbarItem(placement: .navigationBarLeading) {
-                    
                     HStack {
-                        Button(action: {
-                            // Action if needed
-                        }) {
+                        NavigationLink(destination: AudioMixer()) {
                             Image(systemName: "slider.vertical.3")
                                 .font(.subheadline)
                                 .padding(10)
@@ -119,18 +168,14 @@ struct Main: View {
                                 .foregroundColor(.white)
                                 .shadow(color: .black.opacity(0.4), radius: 2, x: 0, y: 2)
                         }
-                        Spacer() // Pushes title to center
                     }
                 }
                 
-                
+                // Trailing Toolbar Item
                 ToolbarItem(placement: .navigationBarTrailing) {
                     HStack {
-                        Spacer() // Pushes title to center
                         ZStack {
-                            // Invisible Color Picker Overlaid on Button
-                            
-                            
+                            // Button with ColorPicker
                             Image(systemName: "swatchpalette")
                                 .font(.subheadline)
                                 .padding(8)
@@ -140,19 +185,14 @@ struct Main: View {
                                 .shadow(color: .black.opacity(0.4), radius: 2, x: 0, y: 2)
                             
                             ColorPicker("", selection: $backgroundColor, supportsOpacity: false)
-                                .opacity(1) // Make sure it is fully visible
-                                .frame(width: 50, height: 50)
-                                .offset(x: -8)
-                                .blendMode(.destinationOver)
-                            
-                            
+                                .opacity(0.1) // Make it interactable but invisible
+                                .frame(width: 60, height: 60)
+                                .offset(x:-16)
                         }
-                        
                     }
-                    
                 }
-                
             }
+
             
         }
     }

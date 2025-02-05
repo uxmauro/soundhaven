@@ -11,6 +11,7 @@
 		346880B62D514DDF00C4D171 /* TimeManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 346880B52D514DDA00C4D171 /* TimeManager.swift */; };
 		346880B82D514DFC00C4D171 /* TimerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 346880B72D514DF600C4D171 /* TimerView.swift */; };
 		346880BA2D5154B200C4D171 /* setTimerSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 346880B92D5154AE00C4D171 /* setTimerSheet.swift */; };
+		34D24E492D53B2DE000E84A9 /* AudioMixer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34D24E482D53B2DE000E84A9 /* AudioMixer.swift */; };
 		34E038402D4D5A8500C8DBF9 /* pink-noise.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 34E0383E2D4D5A8500C8DBF9 /* pink-noise.mp3 */; };
 		34E038412D4D5A8500C8DBF9 /* brown-noise.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 34E0383D2D4D5A8500C8DBF9 /* brown-noise.mp3 */; };
 		34E038442D4D696600C8DBF9 /* SoundManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34E038432D4D695300C8DBF9 /* SoundManager.swift */; };
@@ -31,6 +32,7 @@
 		346880B52D514DDA00C4D171 /* TimeManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeManager.swift; sourceTree = "<group>"; };
 		346880B72D514DF600C4D171 /* TimerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerView.swift; sourceTree = "<group>"; };
 		346880B92D5154AE00C4D171 /* setTimerSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = setTimerSheet.swift; sourceTree = "<group>"; };
+		34D24E482D53B2DE000E84A9 /* AudioMixer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioMixer.swift; sourceTree = "<group>"; };
 		34E0383D2D4D5A8500C8DBF9 /* brown-noise.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "brown-noise.mp3"; sourceTree = "<group>"; };
 		34E0383E2D4D5A8500C8DBF9 /* pink-noise.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "pink-noise.mp3"; sourceTree = "<group>"; };
 		34E038432D4D695300C8DBF9 /* SoundManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SoundManager.swift; sourceTree = "<group>"; };
@@ -115,6 +117,7 @@
 			children = (
 				BB4651812BCD80900059AE63 /* Main.swift */,
 				346880B92D5154AE00C4D171 /* setTimerSheet.swift */,
+				34D24E482D53B2DE000E84A9 /* AudioMixer.swift */,
 				346880B72D514DF600C4D171 /* TimerView.swift */,
 				34E038452D4D6FC000C8DBF9 /* scrollTest.swift */,
 				3446C0CE2D4D3EF100DECA0D /* Sounds.swift */,
@@ -198,6 +201,7 @@
 			files = (
 				346880B82D514DFC00C4D171 /* TimerView.swift in Sources */,
 				BB4651832BCD80900059AE63 /* Store.swift in Sources */,
+				34D24E492D53B2DE000E84A9 /* AudioMixer.swift in Sources */,
 				BB4651862BCD80900059AE63 /* SampleImage.swift in Sources */,
 				34E038462D4D6FC500C8DBF9 /* scrollTest.swift in Sources */,
 				346880BA2D5154B200C4D171 /* setTimerSheet.swift in Sources */,

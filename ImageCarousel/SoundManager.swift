@@ -4,6 +4,7 @@ import AVFoundation
 
 class SoundManager: ObservableObject {
     private var audioEngine = AVAudioEngine()
+    private var players: [NoiseType: AVAudioPlayerNode] = [:] // ✅ Multiple players
     private var playerNode = AVAudioPlayerNode()
     private var audioFile: AVAudioFile?
     private var buffer: AVAudioPCMBuffer?
