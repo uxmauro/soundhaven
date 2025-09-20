@@ -424,22 +424,22 @@ struct PurchaseView: View {
             if storeManager.isLoading {
                 ProgressView("Loading subscriptions...")
                     .padding()
-            } else if let error = storeManager.loadingError {
-                VStack(spacing: 8) {
-                    Spacer()
-                    Text("Something went wrong while loading subscriptions.")
-                        .foregroundColor(.black)
-                    Text(error.localizedDescription)
-                        .font(.footnote)
-                        .foregroundColor(.secondary)
-                    Button("Try Again") {
-                        Task {
-                            await storeManager.fetchProducts()
-                        }
-                    }
-                    .padding(.top)
-                    Spacer()
-                }
+//            } else if let error = storeManager.loadingError {
+//                VStack(spacing: 8) {
+//                    Spacer()
+//                    Text("Something went wrong while loading subscriptions.")
+//                        .foregroundColor(.white)
+//                    Text(error.localizedDescription)
+//                        .font(.footnote)
+//                        .foregroundColor(.secondary)
+//                    Button("Try Again") {
+//                        Task {
+//                            await storeManager.fetchProducts()
+//                        }
+//                    }
+//                    .padding(.top)
+//                    Spacer()
+//                }
             } else if storeManager.products.isEmpty {
                 Text("No subscription options available at this time.")
                     .foregroundColor(.secondary)
