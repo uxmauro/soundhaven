@@ -71,26 +71,58 @@ class SoundManager: ObservableObject {
     }
     
     func togglePlayback() {
-        if playerNode.isPlaying {
-            playerNode.pause()
-            isPlaying = false
-        } else {
-            if !isPlaying {
-                scheduleBuffers() // Schedule new buffers when starting playback
+        DispatchQueue.global(qos: .userInitiated).async {
+            if self.playerNode.isPlaying {
+                print("⏸ Pausing playback")
+                self.playerNode.pause()
+                DispatchQueue.main.async {
+                    self.isPlaying = false
+                }
+            } else {
+                if !self.audioEngine.isRunning {
+                    do {
+                        try self.audioEngine.start()
+                        print("▶️ Restarting audio engine")
+                    } catch {
+                        print("⚠️ Failed to start audio engine: \(error.localizedDescription)")
+                        return
+                    }
+                }
+                
+                if !self.isPlaying {
+                    self.scheduleBuffers() // Ensure new buffers are scheduled
+                }
+
+                print("▶️ Starting playback")
+                self.playerNode.play()
+
+                DispatchQueue.main.async {
+                    self.isPlaying = true
+                }
             }
-            playerNode.play()
-            isPlaying = true
         }
     }
+
+
     
     func stopPlayback() {
-        if playerNode.isPlaying {  // ✅ Prevent stopping an already stopped engine
-            playerNode.stop()
-            audioEngine.stop()
-            audioEngine.reset()
-            isPlaying = false
+        DispatchQueue.global(qos: .userInitiated).async {
+            if self.playerNode.isPlaying {
+                print("🛑 Stopping playback")
+                self.playerNode.stop()
+            }
+
+            print("🔄 Resetting audio engine")
+            self.audioEngine.stop()
+            self.audioEngine.reset()
+
+            DispatchQueue.main.async {
+                self.isPlaying = false
+                self.currentNoise = nil  // Clear current noise type
+            }
         }
     }
+
 
     
     

@@ -3,12 +3,10 @@
 import SwiftUI
 
 struct ContentView: View {
+    @StateObject private var storeManager = StoreKitManager()
     var body: some View {
         
-            Main()
-                .tabItem {
-                    Label("ScrollView+  ", systemImage: "3.circle.fill")
-                }
+            TestMain(storeManager: storeManager)
     }
 }
 

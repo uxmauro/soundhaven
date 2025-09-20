@@ -1,0 +1,25 @@
+
+[
+    { "name": "White Noise", "file": "white_noise.mp3" },
+    { "name": "Pink Noise", "file": "pink_noise.mp3" },
+    { "name": "Brown Noise", "file": "brown_noise.mp3" },
+    { "name": "Rain", "file": "rain.mp3" },
+    { "name": "Beach", "file": "beach.mp3" },
+    { "name": "Shh", "file": "shhh.mp3" },
+    { "name": "Bonfire", "file": "bonfire.mp3" },
+    { "name": "Birds", "file": "birds.mp3" },
+    { "name": "Owl", "file": "owl.mp3" },
+    { "name": "Crickets", "file": "crickets.mp3" },
+    { "name": "Fan", "file": "fan.mp3" },
+    { "name": "Flute", "file": "flute.mp3" },
+    { "name": "Frog", "file": "frogs.mp3" },
+    { "name": "Piano", "file": "piano.mp3" },
+    { "name": "Harp", "file": "harp.mp3" },
+    { "name": "Heartbeat", "file": "heartbeat.mp3" },
+    { "name": "Engine", "file": "engine.mp3" },
+    { "name": "Train", "file": "train.mp3" },
+    { "name": "Airplane", "file": "airplane.mp3" },
+    { "name": "Lo-fi Piano", "file": "lofi-piano.mp3" },
+    { "name": "Lo-fi Guitar", "file": "lofi-guitar.mp3" }
+
+]

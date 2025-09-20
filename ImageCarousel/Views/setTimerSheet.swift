@@ -83,9 +83,9 @@ struct SetTimerSheet: View {
 
 
 #Preview {
-    @State var hours = 1
+    @State var hours = 0
     @State var minutes = 30
-    @State var seconds = 15
+    @State var seconds = 00
     let isRunning = false
 
     return SetTimerSheet(

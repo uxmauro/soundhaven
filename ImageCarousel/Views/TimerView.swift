@@ -1,18 +1,14 @@
 import SwiftUI
 
+
 struct TimerView: View {
-    @StateObject private var timerManager: TimerManager
-    let onTimerEnd: () -> Void  // Closure to stop sound & rotation ✅
+    @ObservedObject var timerManager: TimerManager  // ✅ Use ObservedObject
+    let onTimerEnd: () -> Void
 
     @State private var showSheet = false
     @State private var hours = 0
     @State private var minutes = 1
     @State private var seconds = 0
-
-    init(soundManager: SoundManager, onTimerEnd: @escaping () -> Void) {
-        _timerManager = StateObject(wrappedValue: TimerManager(soundManager: soundManager)) // ✅ Pass SoundManager
-        self.onTimerEnd = onTimerEnd
-    }
 
     var body: some View {
         VStack(spacing: 20) {
@@ -31,7 +27,7 @@ struct TimerView: View {
         .padding()
         .onReceive(timerManager.$timeRemaining) { time in
             if time == 0 {
-                onTimerEnd()  // ⏳ Timer ended, stop sound & rotation ✅
+                onTimerEnd()
             }
         }
         .sheet(isPresented: $showSheet) {
@@ -69,8 +65,3 @@ struct TimerView: View {
         return String(format: "%02d:%02d:%02d", h, m, s)
     }
 }
-
-
-//#Preview {
-//    TimerView()
-//}
